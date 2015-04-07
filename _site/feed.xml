@@ -6,24 +6,47 @@
 </description>
     <link>http://darktan.github.io/</link>
     <atom:link href="http://darktan.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 07 Apr 2015 23:23:16 +0300</pubDate>
-    <lastBuildDate>Tue, 07 Apr 2015 23:23:16 +0300</lastBuildDate>
+    <pubDate>Wed, 08 Apr 2015 00:24:37 +0300</pubDate>
+    <lastBuildDate>Wed, 08 Apr 2015 00:24:37 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>第一篇文章是为了测试</title>
+        <title>Html+css+javascript学习计划</title>
         <description>&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-&lt;body&gt;
-&lt;header&gt;This is a test&lt;/header&gt;
-&lt;p&gt;for my first web blog&lt;/p&gt;
+&lt;p&gt;鉴于日前加入了一个python学习小组，本人决定努力学习前端知识，以便成为群里的异类。我的异类之路，无人能挡！
+2015年4月6日－4月12日(第一周)：
+之前已经在teamtreehouse开始了相对应的课程，选择了前端web开发方向。所以说目前已经有了一些进度，如下图我已经完成第一个how to make a website课(大约有七八个小时的estimation study time)：&lt;/p&gt;
 
-&lt;a href=&quot;http://www.baidu.com&quot;&gt;中文测试，看看是否有乱码,你敢点进去么&lt;/a&gt;
-&lt;/body&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/38706-dd1b4a70844cad80.png&quot; alt=&quot;美妙实惠的进度表&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这一周的目标就是接着完成下边的css basics课程，不多说。能持续学习下去就好。&lt;/p&gt;
 </description>
         <pubDate>Tue, 07 Apr 2015 00:00:00 +0300</pubDate>
-        <link>http://darktan.github.io/2015/04/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E6%98%AF%E4%B8%BA%E4%BA%86%E6%B5%8B%E8%AF%95.html</link>
-        <guid isPermaLink="true">http://darktan.github.io/2015/04/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E6%98%AF%E4%B8%BA%E4%BA%86%E6%B5%8B%E8%AF%95.html</guid>
+        <link>http://darktan.github.io/2015/04/07/html+css+javascript%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/07/html+css+javascript%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>4月7号笔记与进度更新</title>
+        <description>&lt;meta charset=&quot;utf-8&quot; /&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/38706-b1a018edd97a75b4.png&quot; alt=&quot;我的小主页&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我的小主页&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;本来想着既然要学习前端技术，最好的练习方式当然是马上能上线个网站是最好的了。但是毕竟水平还略差，于是乎折中选择了利用&lt;a href=&quot;https://pages.github.com/&quot;&gt;github pages&lt;/a&gt;建立一个小博客(&lt;a href=&quot;http://jekyllcn.com/&quot;&gt;jekyll是个好东西&lt;/a&gt;)来记录自己学习的过程（&lt;a href=&quot;darktan.github.io&quot;&gt;点击这里可以进入我的博客&lt;/a&gt;）。说实话，这玩意还挺不容易，尤其是我的mac在安装jekyll过程中出现了一些问题，花了好几个小时都没解决。最后无奈地看着terminal里出现的大量bug提示信息中某一行说下载一个东西安装就好，试了试还真成功了！(因为之前也看到各种人回答说下载某某东西就好但是下载安装了还是没解决，所以本来对这提示信息不抱希望)&lt;/p&gt;
+
+&lt;p&gt;简而言之，今天还真没什么笔记，今天动手实际弄出来了一个网站，就算是一个很大的进步吧，也算是一个优秀的进度（就是今天没有浪费时间，解决了很多问题，做出了实际东西的意思）。博客里的美化会慢慢好起来的，这需要看看jekyll的文档。&lt;/p&gt;
+
+&lt;p&gt;不过得到的启示就是，不要觉得某件事难就不去做，当真的做起来并解决它的时候，即使花费了不少时间，收获还是很巨大的。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 07 Apr 2015 00:00:00 +0300</pubDate>
+        <link>http://darktan.github.io/2015/04/07/4%E6%9C%887%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/07/4%E6%9C%887%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</guid>
         
         
       </item>
