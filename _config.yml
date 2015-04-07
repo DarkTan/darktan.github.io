@@ -1,0 +1,12 @@
+# Site settings
+title: Dark的异类之路
+email: 这不是我的邮箱@gmail.com
+description: > #
+  为了学习html+css+javascript而建立这个博客。 
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://darktan.github.io" # the base hostname & protocol for your site
+github_username:  Darktan
+
+# Build settings
+markdown: kramdown
