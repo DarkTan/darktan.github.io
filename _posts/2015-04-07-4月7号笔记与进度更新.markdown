@@ -1,4 +1,9 @@
-<meta charset="utf-8" />
+---
+
+layout: post
+
+---
+
 
 ![我的小主页](http://upload-images.jianshu.io/upload_images/38706-b1a018edd97a75b4.png)
 
