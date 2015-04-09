@@ -2,13 +2,221 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dark的异类之路</title>
-    <description>为了学习html+css+javascript而建立这个博客。 联系方式：请看右上角About me 
+    <description>为了学习html+css+javascript而建立这个博客。 联系方式：请看右上角bout me 
 </description>
     <link>http://darktan.github.io/</link>
     <atom:link href="http://darktan.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 09 Apr 2015 01:28:13 +0300</pubDate>
-    <lastBuildDate>Thu, 09 Apr 2015 01:28:13 +0300</lastBuildDate>
+    <pubDate>Thu, 09 Apr 2015 20:31:37 +0300</pubDate>
+    <lastBuildDate>Thu, 09 Apr 2015 20:31:37 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>4月9号笔记与进度更新</title>
+        <description>&lt;h3&gt;&lt;strong&gt;Clojure作业笔记&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;似乎有点突然，这里笔记就转到了这个Clojure，但是没办法，是作业必须完成。为了学分苟活的学渣我也就修修这种课来赚学分了。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://iloveponies.github.io/&quot;&gt;这里是资料，你也可以学，只是没学分。&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4&gt;&lt;strong&gt;Clojure是什么玩意：&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;Clojure&lt;/strong&gt; is a young Lispish functional programming language on the JVM platform, suitable for small and large programs. Because it runs on the JVM, all Clojure programs can use all the standard and third-party Java libraries freely.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;user=&amp;gt; (+ 1 2)
+3
+user=&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上是一个标准的Clojure程序代码和输出，它是一种解释性语言。
+在这门课的material里推荐使用&lt;a href=&quot;http://lighttable.com/&quot;&gt;light table&lt;/a&gt;作为编译器，大约也是因为可以很好的即时执行Clojure代码的缘故。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4&gt;&lt;strong&gt;一个Clojure的function实现&lt;/strong&gt;:&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;(defn                                ; Start a function definition:
+ hello                               ; name
+ &quot;Gives out personalized greetings.&quot; ; a optional docstring
+ [who]                               ; parameters inside brackets
+ (str &quot;Hello, &quot; who &quot;!&quot;))            ; body
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;；&lt;/strong&gt;这个符号在clojure里起到注释的作用。
+让我们来看看在Java下实现同样的语句效果时的代码是怎么样的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/*
+* Gives out personalized greetings.
+*/
+String hello(String who) {
+  return &quot;Hello, &quot; + who + &quot;!&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;没错，你可以发现，在Clojure里没有return关键字。&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;Note that in Clojure, there is no return keyword. The return value of a function is always the value of the last expression in the function body.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;(defn sign [x]
+  (if (&amp;lt; x 0)
+  &quot;-&quot;
+  &quot;+&quot;))
+
+(sign  2) ;=&amp;gt; &quot;+&quot;
+(sign -2) ;=&amp;gt; &quot;-&quot;
+(sign  0) ;=&amp;gt; &quot;+&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上可以看出来如下说明：&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;In functional programming, and specifically in Clojure, everything is an expression. This is a way of saying that everything has a usable value.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;(let [name1 value1
+      name2 value2
+      ...]
+      (expression1)
+      (expression2)
+      ...)    
+
+user=&amp;gt; (let [x 42]
+         (+ x x))
+         ;=&amp;gt; 84
+user=&amp;gt; x
+CompilerException java.lang.RuntimeException:Unable to resolve symbol: x in this context, compiling:(NO_SOURCE_PATH:0) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当需要在一个function里声明一个function或者value时，可以使用let关键字。但是此时let声明出的变量或者函数不能在此函数外部使用，说明这是一个local name。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4&gt;&lt;strong&gt;What kind of values Clojure supports:&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Type        &lt;/th&gt;
+&lt;th&gt; Examples   &lt;/th&gt;
+&lt;th&gt; Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Numbers     &lt;/td&gt;
+&lt;td&gt; 42, 3/2, 2.1&lt;/td&gt;
+&lt;td&gt; Numbers include integers, fractions, and floats.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Strings     &lt;/td&gt;
+&lt;td&gt; &quot;foo&quot;       &lt;/td&gt;
+&lt;td&gt;Text values.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Characters  &lt;/td&gt;
+&lt;td&gt; \x, \y, \√    &lt;/td&gt;
+&lt;td&gt;A single characer is written with a preceding \.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Keywords    &lt;/td&gt;
+&lt;td&gt; :foo, :?    &lt;/td&gt;
+&lt;td&gt; Values often used as map keys.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Booleans    &lt;/td&gt;
+&lt;td&gt; true, false &lt;/td&gt;
+&lt;td&gt; Boolean values.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+Clojure还支持混合的数据结构：&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;A &lt;strong&gt;vector&lt;/strong&gt; is a collection that can be indexed with integers, like an array in other languages. It can contain values of different types.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;[1 2 3]                 ;=&amp;gt; [1 2 3]
+[:foo 42 &quot;bar&quot; (+ 2 3)] ;=&amp;gt; [:foo 42 &quot;bar&quot; 5]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;向量需要用符号[]来表示。不仅是空格，也可以用逗号来分割vector里的数据。以下是怎么获取向量里数据的几个例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(get [&quot;a&quot; &quot;b&quot; &quot;c&quot;] 1)  ;=&amp;gt; &quot;b&quot;
+(get [&quot;a&quot; &quot;b&quot; &quot;c&quot;] 15) ;=&amp;gt; nil
+(get [&quot;x&quot;] 0)          ;=&amp;gt; &quot;x&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vectors are immutable即一个已经声明好的向量是不可改变的，但是可以随时利用它来创造新的向量，例如：(conj和assoc是一个函数)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(conj [1 2 3] 4)          ;=&amp;gt; [1 2 3 4]
+(assoc [1 2 3 4] 2 &quot;foo&quot;) ;=&amp;gt; [1 2 &quot;foo&quot; 4]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4&gt;&lt;strong&gt;Vectors: A Postmodern Deconstruction&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;这个我不知道怎么翻译好，似乎是一种提取向量里的值的方法，说是by destructuring，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(let [[x y z] [1 2 3 4 5 6]]
+  (str x y z))
+;=&amp;gt; &quot;123&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到x,y,z分别抽取出了向量里1，2，3的值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(defn sum-pairs [[x1 y1] [x2 y2]]
+  [(+ x1 x2) (+ y1 y2)])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到我们声明了一个函数，这两个向量的第一个值第二个值分别相加，造出了一个新的向量。我认为这就是一种破坏再生的过程，即destructuring的含义所在。后边的练习大概就是关于利用这个特性各种各样拆分向量来计算，答案如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(defn point [x y]
+  [x y])
+
+(defn rectangle [bottom-left top-right]
+  [bottom-left top-right])
+
+(defn width [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (- x2 x1)))
+
+(defn height [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (- y2 y1)))
+
+(defn square? [rectangle]
+  (= (width rectangle) (height rectangle)))
+
+(defn area [rectangle]
+  (* (width rectangle) (height rectangle)))
+
+(defn contains-point? [rectangle point]
+  (let [[[x1 y1] [x2 y2]] rectangle
+         [x y] point]
+    (and (&amp;lt;= x1 x x2) (&amp;lt;= y1 y y2))))
+
+(defn contains-rectangle? [outer inner]
+  (let [[k1 k2] inner]
+    (and (contains-point? outer k1) (contains-point? outer k2)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt; 今天就先这样吧，明天继续努力！&lt;/p&gt;
+</description>
+        <pubDate>Thu, 09 Apr 2015 00:00:00 +0300</pubDate>
+        <link>http://darktan.github.io/2015/04/09/4%E6%9C%889%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/09/4%E6%9C%889%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>4月8号笔记与进度更新</title>

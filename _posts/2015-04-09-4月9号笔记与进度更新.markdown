@@ -1,0 +1,167 @@
+---
+
+layout: post
+
+---
+
+###**Clojure作业笔记**
+
+似乎有点突然，这里笔记就转到了这个Clojure，但是没办法，是作业必须完成。为了学分苟活的学渣我也就修修这种课来赚学分了。
+
+
+[这里是资料，你也可以学，只是没学分。](http://iloveponies.github.io/)
+
+---
+<br />
+
+####**Clojure是什么玩意：**
+>**Clojure** is a young Lispish functional programming language on the JVM platform, suitable for small and large programs. Because it runs on the JVM, all Clojure programs can use all the standard and third-party Java libraries freely.
+
+```
+user=> (+ 1 2)
+3
+user=>
+```
+以上是一个标准的Clojure程序代码和输出，它是一种解释性语言。
+在这门课的material里推荐使用[light table](http://lighttable.com/)作为编译器，大约也是因为可以很好的即时执行Clojure代码的缘故。
+
+---
+<br />  
+
+####**一个Clojure的function实现**:
+	
+```
+(defn                                ; Start a function definition:
+ hello                               ; name
+ "Gives out personalized greetings." ; a optional docstring
+ [who]                               ; parameters inside brackets
+ (str "Hello, " who "!"))            ; body
+```
+**；**这个符号在clojure里起到注释的作用。
+让我们来看看在Java下实现同样的语句效果时的代码是怎么样的：
+
+```
+/*
+* Gives out personalized greetings.
+*/
+String hello(String who) {
+  return "Hello, " + who + "!";
+}
+```
+没错，你可以发现，在Clojure里没有return关键字。	
+>Note that in Clojure, there is no return keyword. The return value of a function is always the value of the last expression in the function body.
+
+```
+(defn sign [x]
+  (if (< x 0)
+  "-"
+  "+"))
+  
+(sign  2) ;=> "+"
+(sign -2) ;=> "-"
+(sign  0) ;=> "+"
+```
+以上可以看出来如下说明：
+> In functional programming, and specifically in Clojure, everything is an expression. This is a way of saying that everything has a usable value.	
+
+```
+(let [name1 value1
+      name2 value2
+      ...]
+      (expression1)
+      (expression2)
+      ...)    
+
+user=> (let [x 42]
+         (+ x x))
+         ;=> 84
+user=> x
+CompilerException java.lang.RuntimeException:Unable to resolve symbol: x in this context, compiling:(NO_SOURCE_PATH:0) 
+```
+当需要在一个function里声明一个function或者value时，可以使用let关键字。但是此时let声明出的变量或者函数不能在此函数外部使用，说明这是一个local name。
+
+---
+<br />
+  
+####**What kind of values Clojure supports:**
+Type        | Examples   | Description
+------------|------------|------------
+Numbers     | 42, 3/2, 2.1|	Numbers include integers, fractions, and floats.
+Strings     | "foo"       |Text values.
+Characters  | \x, \y, \√	  |A single characer is written with a preceding \\.
+Keywords    | :foo, :?    |	Values often used as map keys.
+Booleans    | true, false |	Boolean values.
+
+<br />
+Clojure还支持混合的数据结构：
+>A **vector** is a collection that can be indexed with integers, like an array in other languages. It can contain values of different types.
+
+```
+[1 2 3]                 ;=> [1 2 3]
+[:foo 42 "bar" (+ 2 3)] ;=> [:foo 42 "bar" 5]
+```
+向量需要用符号[]来表示。不仅是空格，也可以用逗号来分割vector里的数据。以下是怎么获取向量里数据的几个例子：
+
+```
+(get ["a" "b" "c"] 1)  ;=> "b"
+(get ["a" "b" "c"] 15) ;=> nil
+(get ["x"] 0)          ;=> "x"
+```	
+Vectors are immutable即一个已经声明好的向量是不可改变的，但是可以随时利用它来创造新的向量，例如：(conj和assoc是一个函数)
+
+```
+(conj [1 2 3] 4)          ;=> [1 2 3 4]
+(assoc [1 2 3 4] 2 "foo") ;=> [1 2 "foo" 4]
+```	
+
+---
+<br />  
+  
+####**Vectors: A Postmodern Deconstruction**
+这个我不知道怎么翻译好，似乎是一种提取向量里的值的方法，说是by destructuring，如下：
+
+```
+(let [[x y z] [1 2 3 4 5 6]]
+  (str x y z))
+;=> "123"
+```
+可以看到x,y,z分别抽取出了向量里1，2，3的值。
+
+```
+(defn sum-pairs [[x1 y1] [x2 y2]]
+  [(+ x1 x2) (+ y1 y2)])
+```	
+可以看到我们声明了一个函数，这两个向量的第一个值第二个值分别相加，造出了一个新的向量。我认为这就是一种破坏再生的过程，即destructuring的含义所在。后边的练习大概就是关于利用这个特性各种各样拆分向量来计算，答案如下：
+
+```
+(defn point [x y]
+  [x y])
+
+(defn rectangle [bottom-left top-right]
+  [bottom-left top-right])
+
+(defn width [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (- x2 x1)))
+
+(defn height [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (- y2 y1)))
+
+(defn square? [rectangle]
+  (= (width rectangle) (height rectangle)))
+
+(defn area [rectangle]
+  (* (width rectangle) (height rectangle)))
+
+(defn contains-point? [rectangle point]
+  (let [[[x1 y1] [x2 y2]] rectangle
+         [x y] point]
+    (and (<= x1 x x2) (<= y1 y y2))))
+
+(defn contains-rectangle? [outer inner]
+  (let [[k1 k2] inner]
+    (and (contains-point? outer k1) (contains-point? outer k2)))
+```
+
+ 今天就先这样吧，明天继续努力！
