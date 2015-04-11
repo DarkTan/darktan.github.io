@@ -6,12 +6,36 @@
 </description>
     <link>http://darktan.github.io/</link>
     <atom:link href="http://darktan.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 09 Apr 2015 20:31:37 +0300</pubDate>
-    <lastBuildDate>Thu, 09 Apr 2015 20:31:37 +0300</lastBuildDate>
+    <pubDate>Sat, 11 Apr 2015 03:22:36 +0300</pubDate>
+    <lastBuildDate>Sat, 11 Apr 2015 03:22:36 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>4月9号笔记与进度更新</title>
+        <title>4月10号周五的晚上没学习的日子</title>
+        <description>&lt;p&gt;如果说今天到底学了什么，大约就是下午学联技术组开会时，关于网站的一些东西吧，称不上知识。因为使用的是wordpress主题，我们的网站基本上就不需要编码，但是需要学习一些基本的wordpress的操作。感觉是不难的，但是因为要加不少内容，应该还挺啰嗦的吧。&lt;/p&gt;
+
+&lt;p&gt;还想吐槽的是，家里不知道是不是出现了&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E8%87%AD%E8%99%AB%E7%A7%91&quot;&gt;begbug(床虫)&lt;/a&gt;，搞的心里十分紧张。因为在洗澡时发现腿部上有很多小红点，但是却不痒，赶紧咨询前辈们。答案是99%是被咬了，但是我很奇怪的一点是它们怎么透过秋裤咬的我小腿中部外侧。但前辈还说可能也不一定是，因为不痒。但我突然想起一周前的今天，我背着我的睡袋到朋友家客厅地上睡了一晚上，想到曾经听说过床虫出没过在那片区域，心中不免大惊！却也大喜，如果我宿舍里没有，那就是不幸中的万幸！经过身为资深床虫受害者的前辈科普，我对床虫有了一定的认识：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;床虫生命力超强，吃一次可以继续饿半年。有人类的时候，就使劲吸，不跷班不打烊。&lt;/li&gt;
+&lt;li&gt;被床虫咬后当晚，肯定会痒得十分难受，无法入睡。&lt;/li&gt;
+&lt;li&gt;床虫咬的伤口，常常需要几个有甚至半年来完全消退，能持续两到四个星期，遇到热水会更痒。&lt;/li&gt;
+&lt;li&gt;床虫会在人身上留下走过的痕迹，意味着下次还会按照相似的路线来到之前伤口附近继续咬你！所以伤口都十分集中。&lt;/li&gt;
+&lt;li&gt;床虫甚至连你的屁股都咬，这位前辈好惨……&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;不管怎么样，还要持续关注，因为还不确定家里有没有，希望明早起来的时候，身上没有新的伤口。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 10 Apr 2015 00:00:00 +0300</pubDate>
+        <link>http://darktan.github.io/2015/04/10/4%E6%9C%8810%E5%8F%B7%E5%91%A8%E4%BA%94%E7%9A%84%E6%99%9A%E4%B8%8A%E6%B2%A1%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%97%A5%E5%AD%90.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/10/4%E6%9C%8810%E5%8F%B7%E5%91%A8%E4%BA%94%E7%9A%84%E6%99%9A%E4%B8%8A%E6%B2%A1%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%97%A5%E5%AD%90.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>4月9号clojure学习笔记</title>
         <description>&lt;h3&gt;&lt;strong&gt;Clojure作业笔记&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;似乎有点突然，这里笔记就转到了这个Clojure，但是没办法，是作业必须完成。为了学分苟活的学渣我也就修修这种课来赚学分了。&lt;/p&gt;
@@ -212,14 +236,14 @@ Clojure还支持混合的数据结构：&lt;/p&gt;
 &lt;p&gt; 今天就先这样吧，明天继续努力！&lt;/p&gt;
 </description>
         <pubDate>Thu, 09 Apr 2015 00:00:00 +0300</pubDate>
-        <link>http://darktan.github.io/2015/04/09/4%E6%9C%889%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</link>
-        <guid isPermaLink="true">http://darktan.github.io/2015/04/09/4%E6%9C%889%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</guid>
+        <link>http://darktan.github.io/2015/04/09/4%E6%9C%889%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/09/4%E6%9C%889%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html</guid>
         
         
       </item>
     
       <item>
-        <title>4月8号笔记与进度更新</title>
+        <title>4月8号笔记与进度</title>
         <description>&lt;p&gt;昨天的日志里没有和主页统一风格，就只是一个单纯的HTML页面（如下图），一直在想是怎么回事。直到今天又一次看了jekyll的入门教程，发现了我没在文章文件开头写layout的变量格式。感觉一下解决了心病！&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/38706-7ce3191d7e689b06.png&quot; alt=&quot;一个普通的HTML页面&quot; /&gt;&lt;/p&gt;
@@ -232,14 +256,14 @@ Clojure还支持混合的数据结构：&lt;/p&gt;
 &lt;p&gt;至于笔记，我这个人说实话不太记笔记，以后得改改。因为突然这里感觉已经不是正常的笔记记录了，而是心情经验吐槽记录。最近有点忙，明天不知道能看多少。&lt;/p&gt;
 </description>
         <pubDate>Wed, 08 Apr 2015 00:00:00 +0300</pubDate>
-        <link>http://darktan.github.io/2015/04/08/4%E6%9C%888%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</link>
-        <guid isPermaLink="true">http://darktan.github.io/2015/04/08/4%E6%9C%888%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</guid>
+        <link>http://darktan.github.io/2015/04/08/4%E6%9C%888%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/08/4%E6%9C%888%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</guid>
         
         
       </item>
     
       <item>
-        <title>4月7号笔记与进度更新</title>
+        <title>4月7号笔记与进度</title>
         <description>&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/38706-b1a018edd97a75b4.png&quot; alt=&quot;我的小主页&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;我的小主页&lt;/p&gt;
@@ -253,8 +277,8 @@ Clojure还支持混合的数据结构：&lt;/p&gt;
 &lt;p&gt;不过得到的启示就是，不要觉得某件事难就不去做，当真的做起来并解决它的时候，即使花费了不少时间，收获还是很巨大的。&lt;/p&gt;
 </description>
         <pubDate>Tue, 07 Apr 2015 00:00:00 +0300</pubDate>
-        <link>http://darktan.github.io/2015/04/07/4%E6%9C%887%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</link>
-        <guid isPermaLink="true">http://darktan.github.io/2015/04/07/4%E6%9C%887%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6%E6%9B%B4%E6%96%B0.html</guid>
+        <link>http://darktan.github.io/2015/04/07/4%E6%9C%887%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/07/4%E6%9C%887%E5%8F%B7%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</guid>
         
         
       </item>
