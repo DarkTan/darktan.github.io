@@ -1,0 +1,109 @@
+---
+
+layout: post
+
+---
+
+让我们回归这周的CSS任务，争取能学多少是多少。
+
+---
+<br />
+
+##Understanding Values and Units
+
+Every CSS property has a set of values it can accept. Most properties accept keywords that literally describe a value. Many properties also accept numbers, functions, length values, or a URL. 
+
+<br />
+###[CSS Data Type](https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type)
+
+CSS中length变量的Quick Reference:
+
+- [CSS length units](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+- [CSS px is an Angular Measurement](http://inamidst.com/stuff/notes/csspx)
+- [Understanding pixels and other CSS units](https://docs.webplatform.org/wiki/tutorials/understanding-css-units)
+
+####关于长度变量px的绝对长度部分解释
+For high-dpi devices, inches (in), centimeters (cm), millimeters (mm) are defined as their physical counterparts. Therefore the px unit is defined relative to them (1/96 of 1 inch).
+
+- Relative to the viewing device.
+- For screen display, typically one device pixel (dot) of the display.
+- For printers and very high resolution screens one CSS pixel implies multiple device pixels, so that the number of pixel per inch stays around 96.
+
+###Em Units
+Relative length units are relative to other length values. The most commonly used relative unit is the em unit. The em is known as a font-relative unit because it's calculated based on a parent element's font size. (Body default font-size is 16px.)
+
+[Tools for PX to EM conversion made simple](http://pxtoem.com/)
+
+###Rem Units
+The rem unit is similar to the em unit. The difference is that rem is relative only to the root element of the page. This gets us around the compounding font size issue we experience with em units.
+
+Quick Reference: [Font sizing with rem](http://snook.ca/archives/html_and_css/font-size-with-rem)
+
+###Color values
+With CSS, we can describe a color value in different ways. The three most common ways are with a keyword, a hexadecimal value, or an RGB function.
+
+[CSS color values - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
+
+Hexadecimal values
+
+```
+.main-header {
+  background-color: #ff0033;/* equals to #f03 */
+}
+```
+
+RGB Values
+
+```
+a:link {
+  color: rgb(255, 169, 73);
+}
+```
+
+RGBa Values(can be transparent)
+
+```
+a:hover {
+  rgba(255, 169, 73, .4)
+}
+```
+
+###Text Styles
+[text-align](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align)
+Let's us control the horizontal alignment of text.
+
+[text-transform](https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)
+Changes the case of text – whether it's uppercase, lowercase, or capitalized.
+
+[text-decoration](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration)
+Sets the line decoration of elements. We'll commonly use this property to remove underlines in links.
+
+[font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)
+Sets how thick or thin the characters are displayed.
+
+###Font Properties
+Like text properties, font properties let us change the appearance of text by assigning a font family, font size, font style, and more.
+
+[CSS Font stack generator for web safe fonts](http://www.cssfontstack.com/)
+
+[font-family](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)
+Defines a typeface for our text. 
+
+```
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;/* 如果你的电脑没有第一个字体，则显示第二个，第二个也没有就第三个这样。字体名字中有空格的要用""围起来。
+```
+
+[font-style](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)
+Allows italic or oblique faces to be selected within a font family.
+
+###Line Height
+With the [line-height](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height) property, we can increase, or decrease, the vertical gaps between lines of text.
+
+###Font
+A shorthand property that lets us write all the font properties in one value.
+
+```
+body {
+  font: normal 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+```

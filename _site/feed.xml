@@ -6,9 +6,133 @@
 </description>
     <link>http://darktan.github.io/</link>
     <atom:link href="http://darktan.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 11 Apr 2015 16:43:18 +0300</pubDate>
-    <lastBuildDate>Sat, 11 Apr 2015 16:43:18 +0300</lastBuildDate>
+    <pubDate>Mon, 13 Apr 2015 12:40:13 +0300</pubDate>
+    <lastBuildDate>Mon, 13 Apr 2015 12:40:13 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>4月12号学习笔记与进度</title>
+        <description>&lt;p&gt;让我们回归这周的CSS任务，争取能学多少是多少。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Understanding Values and Units&lt;/h2&gt;
+
+&lt;p&gt;Every CSS property has a set of values it can accept. Most properties accept keywords that literally describe a value. Many properties also accept numbers, functions, length values, or a URL.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type&quot;&gt;CSS Data Type&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;CSS中length变量的Quick Reference:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/length&quot;&gt;CSS length units&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://inamidst.com/stuff/notes/csspx&quot;&gt;CSS px is an Angular Measurement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.webplatform.org/wiki/tutorials/understanding-css-units&quot;&gt;Understanding pixels and other CSS units&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h4&gt;关于长度变量px的绝对长度部分解释&lt;/h4&gt;
+
+&lt;p&gt;For high-dpi devices, inches (in), centimeters (cm), millimeters (mm) are defined as their physical counterparts. Therefore the px unit is defined relative to them (1/96 of 1 inch).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Relative to the viewing device.&lt;/li&gt;
+&lt;li&gt;For screen display, typically one device pixel (dot) of the display.&lt;/li&gt;
+&lt;li&gt;For printers and very high resolution screens one CSS pixel implies multiple device pixels, so that the number of pixel per inch stays around 96.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;Em Units&lt;/h3&gt;
+
+&lt;p&gt;Relative length units are relative to other length values. The most commonly used relative unit is the em unit. The em is known as a font-relative unit because it&#39;s calculated based on a parent element&#39;s font size. (Body default font-size is 16px.)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://pxtoem.com/&quot;&gt;Tools for PX to EM conversion made simple&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Rem Units&lt;/h3&gt;
+
+&lt;p&gt;The rem unit is similar to the em unit. The difference is that rem is relative only to the root element of the page. This gets us around the compounding font size issue we experience with em units.&lt;/p&gt;
+
+&lt;p&gt;Quick Reference: &lt;a href=&quot;http://snook.ca/archives/html_and_css/font-size-with-rem&quot;&gt;Font sizing with rem&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Color values&lt;/h3&gt;
+
+&lt;p&gt;With CSS, we can describe a color value in different ways. The three most common ways are with a keyword, a hexadecimal value, or an RGB function.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/color_value&quot;&gt;CSS color values - MDN&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hexadecimal values&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.main-header {
+  background-color: #ff0033;/* equals to #f03 */
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RGB Values&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a:link {
+  color: rgb(255, 169, 73);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RGBa Values(can be transparent)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a:hover {
+  rgba(255, 169, 73, .4)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Text Styles&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/text-align&quot;&gt;text-align&lt;/a&gt;
+Let&#39;s us control the horizontal alignment of text.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform&quot;&gt;text-transform&lt;/a&gt;
+Changes the case of text – whether it&#39;s uppercase, lowercase, or capitalized.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration&quot;&gt;text-decoration&lt;/a&gt;
+Sets the line decoration of elements. We&#39;ll commonly use this property to remove underlines in links.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight&quot;&gt;font-weight&lt;/a&gt;
+Sets how thick or thin the characters are displayed.&lt;/p&gt;
+
+&lt;h3&gt;Font Properties&lt;/h3&gt;
+
+&lt;p&gt;Like text properties, font properties let us change the appearance of text by assigning a font family, font size, font style, and more.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cssfontstack.com/&quot;&gt;CSS Font stack generator for web safe fonts&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/font-family&quot;&gt;font-family&lt;/a&gt;
+Defines a typeface for our text.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;/* 如果你的电脑没有第一个字体，则显示第二个，第二个也没有就第三个这样。字体名字中有空格的要用&quot;&quot;围起来。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/font-style&quot;&gt;font-style&lt;/a&gt;
+Allows italic or oblique faces to be selected within a font family.&lt;/p&gt;
+
+&lt;h3&gt;Line Height&lt;/h3&gt;
+
+&lt;p&gt;With the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/line-height&quot;&gt;line-height&lt;/a&gt; property, we can increase, or decrease, the vertical gaps between lines of text.&lt;/p&gt;
+
+&lt;h3&gt;Font&lt;/h3&gt;
+
+&lt;p&gt;A shorthand property that lets us write all the font properties in one value.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;body {
+  font: normal 1em/1.5 &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sun, 12 Apr 2015 00:00:00 +0300</pubDate>
+        <link>http://darktan.github.io/2015/04/12/4%E6%9C%8812%E5%8F%B7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/12/4%E6%9C%8812%E5%8F%B7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>4月11号这该死的学习之路！</title>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>4月12号学习笔记与进度</title>
+    <meta name="description" content="为了学习html+css+javascript而建立这个博客。 联系方式：请看右上角bout me 
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://darktan.github.io/2015/04/12/4%E6%9C%8812%E5%8F%B7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Dark的异类之路</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/About me/">About me</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">4月12号学习笔记与进度</h1>
+    <p class="post-meta">Apr 12, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>让我们回归这周的CSS任务，争取能学多少是多少。</p>
+
+<hr />
+
+<p><br /></p>
+
+<h2>Understanding Values and Units</h2>
+
+<p>Every CSS property has a set of values it can accept. Most properties accept keywords that literally describe a value. Many properties also accept numbers, functions, length values, or a URL.</p>
+
+<p><br /></p>
+
+<h3><a href="https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type">CSS Data Type</a></h3>
+
+<p>CSS中length变量的Quick Reference:</p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">CSS length units</a></li>
+<li><a href="http://inamidst.com/stuff/notes/csspx">CSS px is an Angular Measurement</a></li>
+<li><a href="https://docs.webplatform.org/wiki/tutorials/understanding-css-units">Understanding pixels and other CSS units</a></li>
+</ul>
+
+
+<h4>关于长度变量px的绝对长度部分解释</h4>
+
+<p>For high-dpi devices, inches (in), centimeters (cm), millimeters (mm) are defined as their physical counterparts. Therefore the px unit is defined relative to them (1/96 of 1 inch).</p>
+
+<ul>
+<li>Relative to the viewing device.</li>
+<li>For screen display, typically one device pixel (dot) of the display.</li>
+<li>For printers and very high resolution screens one CSS pixel implies multiple device pixels, so that the number of pixel per inch stays around 96.</li>
+</ul>
+
+
+<h3>Em Units</h3>
+
+<p>Relative length units are relative to other length values. The most commonly used relative unit is the em unit. The em is known as a font-relative unit because it's calculated based on a parent element's font size. (Body default font-size is 16px.)</p>
+
+<p><a href="http://pxtoem.com/">Tools for PX to EM conversion made simple</a></p>
+
+<h3>Rem Units</h3>
+
+<p>The rem unit is similar to the em unit. The difference is that rem is relative only to the root element of the page. This gets us around the compounding font size issue we experience with em units.</p>
+
+<p>Quick Reference: <a href="http://snook.ca/archives/html_and_css/font-size-with-rem">Font sizing with rem</a></p>
+
+<h3>Color values</h3>
+
+<p>With CSS, we can describe a color value in different ways. The three most common ways are with a keyword, a hexadecimal value, or an RGB function.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">CSS color values - MDN</a></p>
+
+<p>Hexadecimal values</p>
+
+<pre><code>.main-header {
+  background-color: #ff0033;/* equals to #f03 */
+}
+</code></pre>
+
+<p>RGB Values</p>
+
+<pre><code>a:link {
+  color: rgb(255, 169, 73);
+}
+</code></pre>
+
+<p>RGBa Values(can be transparent)</p>
+
+<pre><code>a:hover {
+  rgba(255, 169, 73, .4)
+}
+</code></pre>
+
+<h3>Text Styles</h3>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a>
+Let's us control the horizontal alignment of text.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform">text-transform</a>
+Changes the case of text – whether it's uppercase, lowercase, or capitalized.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration">text-decoration</a>
+Sets the line decoration of elements. We'll commonly use this property to remove underlines in links.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight">font-weight</a>
+Sets how thick or thin the characters are displayed.</p>
+
+<h3>Font Properties</h3>
+
+<p>Like text properties, font properties let us change the appearance of text by assigning a font family, font size, font style, and more.</p>
+
+<p><a href="http://www.cssfontstack.com/">CSS Font stack generator for web safe fonts</a></p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family">font-family</a>
+Defines a typeface for our text.</p>
+
+<pre><code>font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;/* 如果你的电脑没有第一个字体，则显示第二个，第二个也没有就第三个这样。字体名字中有空格的要用""围起来。
+</code></pre>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-style">font-style</a>
+Allows italic or oblique faces to be selected within a font family.</p>
+
+<h3>Line Height</h3>
+
+<p>With the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">line-height</a> property, we can increase, or decrease, the vertical gaps between lines of text.</p>
+
+<h3>Font</h3>
+
+<p>A shorthand property that lets us write all the font properties in one value.</p>
+
+<pre><code>body {
+  font: normal 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+</code></pre>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Dark的异类之路</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Dark的异类之路</li>
+          <li><a href="mailto:简书是个好东西@Dark">简书是个好东西@Dark</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/Darktan">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">Darktan</span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">为了学习html+css+javascript而建立这个博客。 联系方式：请看右上角bout me 
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
