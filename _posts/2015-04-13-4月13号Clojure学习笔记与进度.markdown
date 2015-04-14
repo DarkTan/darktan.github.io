@@ -1,0 +1,79 @@
+---
+
+layout: post
+
+---
+
+上周的目标没有实现，深感惭愧。忙着做各种事务，本周想着还是先完成clojure的作业比较好，因为本月内要完成所有的作业才能算完成。然后今天要写的大约是关于Clojure的maps概念。
+
+---
+<br />
+
+##Maps
+
+Where a vector associates integers to values, a *map* is not restricted to integer keys. You can use any kind of value as a key. A map is written with curly brackets, ```{}```.
+
+```
+{"foo" 42, "bar" 666}
+{"mehmeh" (+ 2 5)
+ "rupatipor" "ropopo"}
+```
+
+A map is indexed with the get function:
+
+```
+(let [ages {"Juhana" 3
+            "Ilmari" 42
+            "King of All Cosmos" -6}]
+  (get ages "King of All Cosmos"))
+;=> -6
+```
+
+在一个标准的clojure程序中，一个map的keys大多数都是keywords。 Keywords are a convenient way of naming keys for values in associative collections such as maps. They are written with a preceding ```:```.
+
+```
+(def book {:title "The City and the City"
+           :authors [{:name "China Miéville", :birth-year 1972}]})
+
+(get book :title) ;=> "The City and the City"
+```
+使用Keywords会比这样调用get更方便。They work as functions that access collections:
+
+```
+(:title book) ;=> "The City and the City"
+```
+当像使用function这样使用时，一个关键字会去collection里寻找它自身有什么并且返回它拥有的value。
+
+```count```可以用来查找collection中有多少elements。
+
+```
+(count [1 2 3]) ;=> 3
+(count {:name "China Miéville", :birth-year 1972}) => 2
+(count ":)") => 2
+```
+
+####Adding Values to a Map
+```(assoc a-map a-key a-value)``` sets the value of ```a-key``` in ```a-map``` to be ```a-value```.
+
+```
+(assoc {:a 1} :b 2) ;=> {:b 2, :a 1}
+(assoc {:a 1} :a 2) ;=> {:a 2}
+```
+
+Vectors are an associative data structure, so ```assoc``` also works with them.
+
+```
+;index: 0 1 2                0   1   2
+(assoc [3 2 1] 1 "~o~") ;=> [3 "~o~" 1]
+```
+```Assoc``` 并不会改变最初的数据结构, 只是会返回一个新的version。
+
+```
+(let [original [1 2 3 4]
+      new      (assoc original 2 "foo")]
+  original)
+;=> [1 2 3 4]
+```
+The keys and values of a map can be of any data type, and one map can contain any number of different data types as both keys and values.
+一个map的keys和values可以是任何数据类型，而且它能包括任意数量的关于keys和values的不同的数据类型。
+
