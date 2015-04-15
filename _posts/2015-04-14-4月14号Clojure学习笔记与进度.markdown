@@ -1,0 +1,68 @@
+---
+
+layout: post
+
+---
+
+昨天学习一点点Clojure的东西，今天继续学习。
+
+对了，发现了teamtreehouse试用账户如果第一个月暂时不想续费是不可以的，必须续费了才能暂停在上边的学习！要不然第一个月暂时不想继续学的话，只能销毁账户。这一招也是挺犀利的，为了能赚点小钱不容易啊。
+
+---
+<br />
+
+##Sequences
+
+Many of Clojure’s functions that operate on vectors and other collections actually operate on sequences. The ```(seq collection)``` function returns a sequence constructed from a collection, such as a vector or a map.
+
+Sequences have the following operations:
+
+- ```(first sequence)``` 返回sequence的第一个元素
+
+- ```(rest sequence)``` 返回sequence除了第一个元素的其他元素
+
+- ```(cons item sequence)``` returns a new sequence where item is the first element and sequence is the rest.返回item是第一个元素、sequence是其余元素的新的sequence
+
+你可以轻易看出，sequence的元素都在括号```()```里。
+
+```
+(seq [1 2 3])          ;=> (1 2 3)
+(seq {:a 42 :b "foo" :c ["ur" "dad"]})
+                       ;=> ([:a 42] [:c ["ur" "dad"]] [:b "foo"])
+(first (seq [1 2 3]))  ;=> 1
+(rest (seq [1 2 3]))    ;=> (2 3)
+(cons 0 (seq [1 2 3])) ;=> (0 1 2 3)
+```
+在使用以上first,rest,cons时，也可以把seq省略，如：
+
+```
+(first [1 2 3])  ;=> 1
+(rest [1 2 3])   ;=> (2 3)
+(cons 0 [1 2 3]) ;=> (0 1 2 3)
+```
+
+###The map function
+
+```(map function collection)```map里有两个参数，一个function和一个sequenceable collection即有序集，或者我们可以说是一个sequence。map会让那个function调用sequence里的每个元素，并返回一个新的sequence，它是由原来的sequence里的每个元素被那个function调用过后返回的结果组成的。
+
+```
+(defn munge [x]
+  (+ x 42))
+
+(map munge [1 2 3 4])
+;=> ((munge 1) (munge 2) (munge 3) (munge 4)) ; [note below]
+;=> ( 43        44        45        46)
+```
+
+当你有一个关于map的sequence, ```:keywords```也可以做map里的function使用，举例：
+
+```
+(:name {:name "MEEEE", :secret "Awesome"}) ;=>  "MEEEE"
+
+(let [people [{:name "Juhana", :age 3}
+              {:name "Ilmari", :age 42}
+              {:name "Jani", :age 72}
+              {:name "King of All Cosmos" :age -6}]]
+  (map :age people))
+;=> (3 42 72 -6)
+```
