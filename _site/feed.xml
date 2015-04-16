@@ -6,9 +6,291 @@
 </description>
     <link>http://darktan.github.io/</link>
     <atom:link href="http://darktan.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 13 Apr 2015 12:40:13 +0300</pubDate>
-    <lastBuildDate>Mon, 13 Apr 2015 12:40:13 +0300</lastBuildDate>
-    <generator>Jekyll v2.4.0</generator>
+    <pubDate>Thu, 16 Apr 2015 21:03:58 +0300</pubDate>
+    <lastBuildDate>Thu, 16 Apr 2015 21:03:58 +0300</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>4月15号clojure学习笔记与进度</title>
+        <description>&lt;p&gt;今天继续学习Clojure，感觉进度有点慢了。大约是因为我又分心跑去teamtreehouse看关于wordpress的教学视频。我为什么会突然不觉得Clojure很重要了呢，大约是因为我看到了暑期还是可以继续修这门课的，作业毕竟是网络提交，很方便。而teamtreehouse是花了钱的，不在上边学总感觉很浪费金钱，突然发觉这也是一种强迫我学习的好方式啊！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4&gt;补充昨日关于sequence相关的一些东西：&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;(concat [&quot;China Miéville&quot;] [&quot;Octavia E. Butler&quot;]) ;=&amp;gt; (&quot;China Miéville&quot; &quot;Octavia E. Butler&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;concat&lt;/strong&gt;可以整合向量vector或者sequence，然后生成新的sequence.但是如果是以下这个形式就不能做到，因为只有一个sequence。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(concat ((&quot;China Miéville&quot;) (&quot;Octavia E. Butler&quot;)))
+;=&amp;gt; ((&quot;China Miéville&quot;) (&quot;Octavia E. Butler&quot;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;(apply function a-seq)&lt;/code&gt; applies function to the arguments in &lt;code&gt;a-seq&lt;/code&gt;. Here’s an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(apply + [1 2 3])
+;=&amp;gt; (+ 1 2 3)
+;=&amp;gt; 6
+
+(apply concat [[&quot;China Miéville&quot;] [&quot;Octavia E. Butler&quot;]])
+;=&amp;gt; (concat [&quot;China Miéville&quot;] [&quot;Octavia E. Butler&quot;])
+;=&amp;gt; (&quot;China Miéville&quot; &quot;Octavia E. Butler&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通常来说，apply是这样使用的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(apply function [arg1 arg2 arg3 ...]) =&amp;gt; (function arg1 arg2 arg3 ...)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The function &lt;code&gt;(repeat n x)&lt;/code&gt; returns a sequence with n x s:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(repeat 5 &quot;*&quot;) ;=&amp;gt; (&quot;*&quot; &quot;*&quot; &quot;*&quot; &quot;*&quot; &quot;*&quot;)
+(repeat 3 &quot;~o~&quot;) ;=&amp;gt; (&quot;~o~&quot; &quot;~o~&quot; &quot;~o~&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Set&lt;/h4&gt;
+
+&lt;p&gt;还有一个主要的data structure是Set. 英文解释是&lt;em&gt;It is an unordered collection of items without duplicates.&lt;/em&gt; 个人理解即为使用它后，会返回一个无序的不重复的集合。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(set [&quot;^^&quot; &quot;^^&quot; &quot;^__*__^&quot;]) ;=&amp;gt; #{&quot;^__*__^&quot; &quot;^^&quot;}
+(set [1 2 3 1 1 1 3 3 2 1]) ;=&amp;gt; #{1 2 3}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;The textual form of a set is &lt;code&gt;#{an-elem another-elem ...}&lt;/code&gt; and you can convert another collection into a set with the function &lt;code&gt;set&lt;/code&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;可以使用&lt;code&gt;contains?&lt;/code&gt;查找set中有没有一个元素：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(def games #{&quot;Portal&quot;, &quot;Planescape: Torment&quot;,
+             &quot;Machinarium&quot;, &quot;Alpha Protocol&quot;})
+
+(contains? games &quot;Portal&quot;) ;=&amp;gt; true
+(contains? games &quot;RAGE&quot;)   ;=&amp;gt; false
+(contains? games 42)       ;=&amp;gt; false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;(conj set elem)&lt;/code&gt; adds elem to set if it does not already have elem；&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;(disj set elem)&lt;/code&gt; removes elem from set if it contains elem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(conj #{:a :b :c} :EEEEE) ;=&amp;gt; #{:a :c :b :EEEEE}
+//如果有了那元素则不加入
+(conj #{:a :b :c} :a)     ;=&amp;gt; #{:a :c :b}
+//也可以加入多个元素
+(conj #{:a :b :c} :d :e)  ;=&amp;gt; #{:a :c :b :d :e}
+//删除元素
+(disj #{:a :b :c} :c) ;=&amp;gt; #{:a :b}
+(disj #{:a :b :c} :EEEEE) ;=&amp;gt; #{:a :c :b}
+(disj #{:a :b :c} :c :a) ;=&amp;gt; #{:b}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果想知道一个set的大小，可以用&lt;code&gt;count&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(count #{1 2 3}) ;=&amp;gt; 3
+(count (set [1 2])) ;=&amp;gt; 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;给段例程，&lt;code&gt;all-author-names&lt;/code&gt;是关于怎么查找出books里所有书籍的作者名字并列出：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(def china {:name &quot;China Miéville&quot;, :birth-year 1972})
+(def octavia {:name &quot;Octavia E. Butler&quot;
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name &quot;Daniel Friedman&quot; :birth-year 1944})
+(def felleisen {:name &quot;Matthias Felleisen&quot;})
+
+(def cities {:title &quot;The City and the City&quot; :authors [china]})
+(def wild-seed {:title &quot;Wild Seed&quot;, :authors [octavia]})
+(def embassytown {:title &quot;Embassytown&quot;, :authors [china]})
+(def little-schemer {:title &quot;The Little Schemer&quot;
+                     :authors [friedman, felleisen]})
+
+(def books [cities, wild-seed, embassytown, little-schemer])
+
+(defn all-author-names [books]
+  (let [author-names
+         (fn [book] (map :name (:authors book)))]
+    (set (apply concat (map author-names books)))))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;关于all-author-names的注释：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fn&lt;/code&gt; to introduce a helper function,&lt;/li&gt;
+&lt;li&gt;keywords to index the books,&lt;/li&gt;
+&lt;li&gt;第一个map to get all authors from a single book&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;let&lt;/code&gt; to give a name to our helper function,&lt;/li&gt;
+&lt;li&gt;第二个map to apply the helper function to all the given books, and&lt;/li&gt;
+&lt;li&gt;construct a &lt;code&gt;set&lt;/code&gt; with the set function to get rid of duplicates.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;结果如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(all-author-names books)
+;=&amp;gt; #{&quot;Matthias Felleisen&quot; &quot;China Miéville&quot;
+;     &quot;Octavia E. Butler&quot; &quot;Daniel Friedman&quot;}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 15 Apr 2015 00:00:00 +0300</pubDate>
+        <link>http://darktan.github.io/2015/04/15/4%E6%9C%8815%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/15/4%E6%9C%8815%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>4月14号clojure学习笔记与进度</title>
+        <description>&lt;p&gt;昨天学习一点点Clojure的东西，今天继续学习。&lt;/p&gt;
+
+&lt;p&gt;对了，发现了teamtreehouse试用账户如果第一个月暂时不想续费是不可以的，必须续费了才能暂停在上边的学习！要不然第一个月暂时不想继续学的话，只能销毁账户。这一招也是挺犀利的，为了能赚点小钱不容易啊。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Sequences&lt;/h2&gt;
+
+&lt;p&gt;Many of Clojure’s functions that operate on vectors and other collections actually operate on sequences. The &lt;code&gt;(seq collection)&lt;/code&gt; function returns a sequence constructed from a collection, such as a vector or a map.&lt;/p&gt;
+
+&lt;p&gt;Sequences have the following operations:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;(first sequence)&lt;/code&gt; 返回sequence的第一个元素&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;(rest sequence)&lt;/code&gt; 返回sequence除了第一个元素的其他元素&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;(cons item sequence)&lt;/code&gt; returns a new sequence where item is the first element and sequence is the rest.返回item是第一个元素、sequence是其余元素的新的sequence&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;你可以轻易看出，sequence的元素都在括号&lt;code&gt;()&lt;/code&gt;里。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(seq [1 2 3])          ;=&amp;gt; (1 2 3)
+(seq {:a 42 :b &quot;foo&quot; :c [&quot;ur&quot; &quot;dad&quot;]})
+                       ;=&amp;gt; ([:a 42] [:c [&quot;ur&quot; &quot;dad&quot;]] [:b &quot;foo&quot;])
+(first (seq [1 2 3]))  ;=&amp;gt; 1
+(rest (seq [1 2 3]))    ;=&amp;gt; (2 3)
+(cons 0 (seq [1 2 3])) ;=&amp;gt; (0 1 2 3)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在使用以上first,rest,cons时，也可以把seq省略，如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(first [1 2 3])  ;=&amp;gt; 1
+(rest [1 2 3])   ;=&amp;gt; (2 3)
+(cons 0 [1 2 3]) ;=&amp;gt; (0 1 2 3)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;The map function&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;(map function collection)&lt;/code&gt;map里有两个参数，一个function和一个sequenceable collection即有序集，或者我们可以说是一个sequence。map会让那个function调用sequence里的每个元素，并返回一个新的sequence，它是由原来的sequence里的每个元素被那个function调用过后返回的结果组成的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(defn munge [x]
+  (+ x 42))
+
+(map munge [1 2 3 4])
+;=&amp;gt; ((munge 1) (munge 2) (munge 3) (munge 4)) ; [note below]
+;=&amp;gt; ( 43        44        45        46)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当你有一个关于map的sequence, &lt;code&gt;:keywords&lt;/code&gt;也可以做map里的function使用，举例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(:name {:name &quot;MEEEE&quot;, :secret &quot;Awesome&quot;}) ;=&amp;gt;  &quot;MEEEE&quot;
+
+(let [people [{:name &quot;Juhana&quot;, :age 3}
+              {:name &quot;Ilmari&quot;, :age 42}
+              {:name &quot;Jani&quot;, :age 72}
+              {:name &quot;King of All Cosmos&quot; :age -6}]]
+  (map :age people))
+;=&amp;gt; (3 42 72 -6)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 14 Apr 2015 00:00:00 +0300</pubDate>
+        <link>http://darktan.github.io/2015/04/14/4%E6%9C%8814%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/14/4%E6%9C%8814%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>4月13号clojure学习笔记与进度</title>
+        <description>&lt;p&gt;上周的目标没有实现，深感惭愧。忙着做各种事务，本周想着还是先完成clojure的作业比较好，因为本月内要完成所有的作业才能算完成。然后今天要写的大约是关于Clojure的maps概念。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Maps&lt;/h2&gt;
+
+&lt;p&gt;Where a vector associates integers to values, a &lt;em&gt;map&lt;/em&gt; is not restricted to integer keys. You can use any kind of value as a key. A map is written with curly brackets, &lt;code&gt;{}&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{&quot;foo&quot; 42, &quot;bar&quot; 666}
+{&quot;mehmeh&quot; (+ 2 5)
+ &quot;rupatipor&quot; &quot;ropopo&quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A map is indexed with the get function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(let [ages {&quot;Juhana&quot; 3
+            &quot;Ilmari&quot; 42
+            &quot;King of All Cosmos&quot; -6}]
+  (get ages &quot;King of All Cosmos&quot;))
+;=&amp;gt; -6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在一个标准的clojure程序中，一个map的keys大多数都是keywords。 Keywords are a convenient way of naming keys for values in associative collections such as maps. They are written with a preceding &lt;code&gt;:&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(def book {:title &quot;The City and the City&quot;
+           :authors [{:name &quot;China Miéville&quot;, :birth-year 1972}]})
+
+(get book :title) ;=&amp;gt; &quot;The City and the City&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用Keywords会比这样调用get更方便。They work as functions that access collections:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(:title book) ;=&amp;gt; &quot;The City and the City&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当像使用function这样使用时，一个关键字会去collection里寻找它自身有什么并且返回它拥有的value。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;count&lt;/code&gt;可以用来查找collection中有多少elements。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(count [1 2 3]) ;=&amp;gt; 3
+(count {:name &quot;China Miéville&quot;, :birth-year 1972}) =&amp;gt; 2
+(count &quot;:)&quot;) =&amp;gt; 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;Adding Values to a Map&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;(assoc a-map a-key a-value)&lt;/code&gt; sets the value of &lt;code&gt;a-key&lt;/code&gt; in &lt;code&gt;a-map&lt;/code&gt; to be &lt;code&gt;a-value&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(assoc {:a 1} :b 2) ;=&amp;gt; {:b 2, :a 1}
+(assoc {:a 1} :a 2) ;=&amp;gt; {:a 2}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vectors are an associative data structure, so &lt;code&gt;assoc&lt;/code&gt; also works with them.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;;index: 0 1 2                0   1   2
+(assoc [3 2 1] 1 &quot;~o~&quot;) ;=&amp;gt; [3 &quot;~o~&quot; 1]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Assoc&lt;/code&gt; 并不会改变最初的数据结构, 只是会返回一个新的version。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(let [original [1 2 3 4]
+      new      (assoc original 2 &quot;foo&quot;)]
+  original)
+;=&amp;gt; [1 2 3 4]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The keys and values of a map can be of any data type, and one map can contain any number of different data types as both keys and values.
+一个map的keys和values可以是任何数据类型，而且它能包括任意数量的关于keys和values的不同的数据类型。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 13 Apr 2015 00:00:00 +0300</pubDate>
+        <link>http://darktan.github.io/2015/04/13/4%E6%9C%8813%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</link>
+        <guid isPermaLink="true">http://darktan.github.io/2015/04/13/4%E6%9C%8813%E5%8F%B7Clojure%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%8E%E8%BF%9B%E5%BA%A6.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>4月12号学习笔记与进度</title>

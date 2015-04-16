@@ -1,0 +1,131 @@
+---
+
+layout: post
+
+---
+
+今天继续学习Clojure，感觉进度有点慢了。大约是因为我又分心跑去teamtreehouse看关于wordpress的教学视频。我为什么会突然不觉得Clojure很重要了呢，大约是因为我看到了暑期还是可以继续修这门课的，作业毕竟是网络提交，很方便。而teamtreehouse是花了钱的，不在上边学总感觉很浪费金钱，突然发觉这也是一种强迫我学习的好方式啊！
+
+---
+<br />
+
+####补充昨日关于sequence相关的一些东西：
+
+```
+(concat ["China Miéville"] ["Octavia E. Butler"]) ;=> ("China Miéville" "Octavia E. Butler")
+```
+**concat**可以整合向量vector或者sequence，然后生成新的sequence.但是如果是以下这个形式就不能做到，因为只有一个sequence。
+
+```
+(concat (("China Miéville") ("Octavia E. Butler")))
+;=> (("China Miéville") ("Octavia E. Butler"))
+```
+
+```(apply function a-seq)``` applies function to the arguments in ```a-seq```. Here’s an example:
+
+```
+(apply + [1 2 3])
+;=> (+ 1 2 3)
+;=> 6
+
+(apply concat [["China Miéville"] ["Octavia E. Butler"]])
+;=> (concat ["China Miéville"] ["Octavia E. Butler"])
+;=> ("China Miéville" "Octavia E. Butler")
+```
+
+通常来说，apply是这样使用的：
+
+```
+(apply function [arg1 arg2 arg3 ...]) => (function arg1 arg2 arg3 ...)
+```
+
+The function ```(repeat n x)``` returns a sequence with n x s:
+
+```
+(repeat 5 "*") ;=> ("*" "*" "*" "*" "*")
+(repeat 3 "~o~") ;=> ("~o~" "~o~" "~o~")
+```
+
+####Set
+
+还有一个主要的data structure是Set. 英文解释是*It is an unordered collection of items without duplicates.* 个人理解即为使用它后，会返回一个无序的不重复的集合。
+
+```
+(set ["^^" "^^" "^__*__^"]) ;=> #{"^__*__^" "^^"}
+(set [1 2 3 1 1 1 3 3 2 1]) ;=> #{1 2 3}
+```
+
+**The textual form of a set is ```#{an-elem another-elem ...}``` and you can convert another collection into a set with the function ```set```.**
+
+可以使用```contains?```查找set中有没有一个元素：
+
+```
+(def games #{"Portal", "Planescape: Torment",
+             "Machinarium", "Alpha Protocol"})
+
+(contains? games "Portal") ;=> true
+(contains? games "RAGE")   ;=> false
+(contains? games 42)       ;=> false
+```
+```(conj set elem)``` adds elem to set if it does not already have elem；
+
+```(disj set elem)``` removes elem from set if it contains elem:
+
+```
+(conj #{:a :b :c} :EEEEE) ;=> #{:a :c :b :EEEEE}
+//如果有了那元素则不加入
+(conj #{:a :b :c} :a)     ;=> #{:a :c :b}
+//也可以加入多个元素
+(conj #{:a :b :c} :d :e)  ;=> #{:a :c :b :d :e}
+//删除元素
+(disj #{:a :b :c} :c) ;=> #{:a :b}
+(disj #{:a :b :c} :EEEEE) ;=> #{:a :c :b}
+(disj #{:a :b :c} :c :a) ;=> #{:b}
+```
+如果想知道一个set的大小，可以用```count```.
+
+```
+(count #{1 2 3}) ;=> 3
+(count (set [1 2])) ;=> 2
+```
+
+给段例程，```all-author-names```是关于怎么查找出books里所有书籍的作者名字并列出：
+
+```
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+
+(def cities {:title "The City and the City" :authors [china]})
+(def wild-seed {:title "Wild Seed", :authors [octavia]})
+(def embassytown {:title "Embassytown", :authors [china]})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+
+(def books [cities, wild-seed, embassytown, little-schemer])
+
+(defn all-author-names [books]
+  (let [author-names
+         (fn [book] (map :name (:authors book)))]
+    (set (apply concat (map author-names books)))))
+   
+```
+关于all-author-names的注释：
+
+- ```fn``` to introduce a helper function,
+- keywords to index the books,
+- 第一个map to get all authors from a single book
+- ```let``` to give a name to our helper function,
+- 第二个map to apply the helper function to all the given books, and
+- construct a ```set``` with the set function to get rid of duplicates.
+
+结果如下：
+
+```
+(all-author-names books)
+;=> #{"Matthias Felleisen" "China Miéville"
+;     "Octavia E. Butler" "Daniel Friedman"}
+```
