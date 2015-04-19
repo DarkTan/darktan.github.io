@@ -1,0 +1,80 @@
+---
+
+layout: post
+
+---
+
+这几日感觉有点荒废了，可能是有点茫然，感觉自己陷入了懒惰期，得调整调整。仔细想想，感觉自己在很多事情上一直都是这样，开始热情洋溢，渐渐就冷却了。怎么不靠热情去稳定地学习一个东西，是一直想解决的问题。不过还是先不要想太多，先继续学习。这周的目标感觉又要完不成了，还有report要写，头好疼，好烦躁！！！
+
+刚才洗了把脸，不管怎么样，先学起来，就能专注了。还是继续看Clojure，感觉笔记不宜做太多，要不然时间都花在做笔记上了，会导致效率很低的感觉。所以感觉笔记最好是留到最后一些时间来做，这样不至于边看书边走神做笔记。提高学习专注度很重要啊！
+
+今天终于完成了structured data这一章，内容练习真是多得要命。下一章clojure of style看了下居然没练习，内容也不算多，继续看！
+
+---
+<br />
+
+###String Representation
+
+这个大约是一个怎么把结果输出成string类型的知识点：
+
+```
+(str 1 2 3 4) ;=> "1234"
+(str [1 2 3]) ;=> "[1 2 3]"
+(map str [1 2]) ;=> ("1" "2")
+```
+以上就是使用了```str```函数的例子，接下来要介绍```interpose```这个函数：
+
+```(interpose separator a-seq)```, which returns a new sequence that has ```separator``` between each element of ```a-seq```.简单来说就是把一个separator插入到sequence中多个元素之间，生成新的sequence。
+
+```
+(interpose ":" [1 2 3])        ;=> (1 ":" 2 ":" 3)
+(interpose " and " ["a", "b"]) ;=> ("a" " and " "b")
+(interpose ", " [])            ;=> ()
+
+(apply str (interpose " and " ["a", "b"])) ;=> "a and b"
+```
+
+然后在做习题的过程中，发现了如果这样：
+```
+(if true ("111") 22)
+```
+是会编译错误的，必须把“111”外的括号拿掉才行。
+
+##Filtering sequences
+
+```filter``` is used to select some elements of a sequence and disregard the rest:它是用来从sequence中选择对应的元素，忽略其他不需要的元素。 ```filter```和```map```的功能很像。
+
+```(filter predicate collection)``` takes two parameters, a function and a sequencable collection. It calls ```predicate``` (the function) on each element of ```collection``` and returns a sequence of elements of ```collection``` for which ```predicate``` returned a truthy value.
+
+简单来说就是predicate这个位置放一个function，必须是返回布尔值的，它会对每一个collection里的元素值进行调用，返回为真则存储到新的collection里。
+
+```
+(filter pos? [-4 6 -2 7 -8 3])
+;=>       (      6         7          3  )
+; value    -4    6    -2   7     -8   3
+; pos?   false true false true false true
+
+(filter (fn [x] (> (count x) 2)) ["ff" "f" "ffffff" "fff"])
+;=> ("ffffff" "fff")
+```
+
+想知道一个collection是否为空的，可以：
+
+```
+(empty? [])  ;=> true
+(empty? #{}) ;=> true
+(empty? [1]) ;=> false
+```
+
+###Keeping your vectors
+```map``` and ```filter``` always return ```sequences```, regardless of the collection type given as a parameter. Sometimes, however, you want the result to be a ```vector```. For an example, you may want to index the vector afterwards. In this situation, you can use ```mapv``` and ```filterv```, which are variants of ```map``` and ```filter``` that always return vectors. 
+
+简单来说就是map和filter只返回sequence，想要向量的时候就用mapv和filterv就行了。
+
+```
+(mapv ... [...])    ;=> [...]
+(filterv pos? [-4 6 -2 7 -8 3])  ;=> [6 7 3]
+(filterv pos? #{-4 6 -2 7 -8 3}) ;=> [3 6 7]
+(mapv ... #{...})   ;=> [...]
+```
+
