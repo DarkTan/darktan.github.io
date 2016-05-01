@@ -1,10 +1,11 @@
 auto: true
 # Site settings
 title: Dark的异类之路
-email: 简书是个好东西@Dark
+email: 没有邮箱
 description: > #
   为了学习html+css+javascript而建立这个博客。
-  联系方式：请看右上角bout me 
+  之前这个荒废了，于是决定变成个人碎碎念的博客记录。(2016-05-01)
+  联系方式：请看右上角About me 
 
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://darktan.github.io" # the base hostname & protocol for your site

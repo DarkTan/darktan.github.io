@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dark的异类之路</title>
-    <description>为了学习html+css+javascript而建立这个博客。 联系方式：请看右上角bout me 
+    <description>为了学习html+css+javascript而建立这个博客。 联系方式：请看右上角About me 
 </description>
     <link>http://darktan.github.io/</link>
     <atom:link href="http://darktan.github.io/feed.xml" rel="self" type="application/rss+xml" />
